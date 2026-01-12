@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hannah Song Portfolio - Whiteboard/Sketchbook Design System */
+
+@layer base {
+  :root {
+    /* Main canvas - soft lavender frame with paper center */
+    --background: 270 30% 92%;
+    --foreground: 240 10% 20%;
+
+    /* Paper texture area */
+    --card: 40 30% 96%;
+    --card-foreground: 240 10% 20%;
+
+    --popover: 40 30% 96%;
+    --popover-foreground: 240 10% 20%;
+
+    --primary: 270 40% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 40% 90%;
+    --secondary-foreground: 240 10% 20%;
+
+    --muted: 270 20% 88%;
+    --muted-foreground: 240 10% 45%;
+
+    --accent: 330 70% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 20% 80%;
+    --input: 270 20% 85%;
+    --ring: 270 40% 60%;
+
+    --radius: 0.75rem;
+
+    /* Sticky note colors */
+    --sticky-yellow: 50 95% 70%;
+    --sticky-green: 140 60% 70%;
+    --sticky-pink: 340 80% 80%;
+    --sticky-blue: 210 80% 75%;
+    --sticky-orange: 30 90% 70%;
+    --sticky-purple: 270 60% 75%;
+
+    /* Drawing colors */
+    --draw-black: 0 0% 15%;
+    --draw-blue: 210 90% 50%;
+    --draw-red: 0 80% 55%;
+    --draw-green: 140 70% 40%;
+    --draw-yellow: 50 95% 55%;
+    --draw-orange: 30 90% 55%;
+    --draw-pink: 330 80% 65%;
+    --draw-purple: 270 70% 60%;
+
+    /* Whiteboard/frame */
+    --frame: 270 25% 85%;
+    --paper: 45 40% 97%;
+
+    /* Font families */
+    --font-handwritten: "Caveat", cursive;
+    --font-sketch: "Patrick Hand", cursive;
+    --font-body: "Inter", sans-serif;
+
+    --sidebar-background: 270 30% 92%;
+    --sidebar-foreground: 240 10% 20%;
+    --sidebar-primary: 270 40% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 20% 88%;
+    --sidebar-accent-foreground: 240 10% 20%;
+    --sidebar-border: 270 20% 80%;
+    --sidebar-ring: 270 40% 60%;
+  }
+
+  .dark {
+    /* Chalkboard mode */
+    --background: 220 20% 12%;
+    --foreground: 45 20% 90%;
+
+    --card: 220 15% 18%;
+    --card-foreground: 45 20% 90%;
+
+    --popover: 220 15% 18%;
+    --popover-foreground: 45 20% 90%;
+
+    --primary: 270 50% 70%;
+    --primary-foreground: 220 20% 12%;
+
+    --secondary: 220 15% 25%;
+    --secondary-foreground: 45 20% 90%;
+
+    --muted: 220 15% 25%;
+    --muted-foreground: 45 15% 65%;
+
+    --accent: 330 60% 70%;
+    --accent-foreground: 220 20% 12%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 45 20% 90%;
+
+    --border: 220 15% 30%;
+    --input: 220 15% 25%;
+    --ring: 270 50% 70%;
+
+    --frame: 220 15% 15%;
+    --paper: 220 12% 20%;
+
+    --sidebar-background: 220 20% 12%;
+    --sidebar-foreground: 45 20% 90%;
+    --sidebar-primary: 270 50% 70%;
+    --sidebar-primary-foreground: 220 20% 12%;
+    --sidebar-accent: 220 15% 25%;
+    --sidebar-accent-foreground: 45 20% 90%;
+    --sidebar-border: 220 15% 30%;
+    --sidebar-ring: 270 50% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-handwritten);
+  }
+}
+
+@layer utilities {
+  .font-handwritten {
+    font-family: var(--font-handwritten);
+  }
+
+  .font-sketch {
+    font-family: var(--font-sketch);
+  }
+
+  .paper-texture {
+    background-color: hsl(var(--paper));
+    background-image: linear-gradient(
+        90deg,
+        transparent 79px,
+        hsl(var(--border) / 0.3) 79px,
+        hsl(var(--border) / 0.3) 81px,
+        transparent 81px
+      ),
+      linear-gradient(hsl(var(--border) / 0.2) 1px, transparent 1px);
+    background-size: 100% 28px;
+  }
+
+  .sticky-note {
+    box-shadow: 2px 2px 5px hsl(var(--foreground) / 0.1),
+      inset 0 -40px 40px -40px hsl(var(--foreground) / 0.05);
+    transform: rotate(-2deg);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .sticky-note:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 4px 4px 10px hsl(var(--foreground) / 0.15),
+      inset 0 -40px 40px -40px hsl(var(--foreground) / 0.05);
+  }
+
+  .hand-drawn-border {
+    border: 2px solid hsl(var(--foreground) / 0.7);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  }
+
+  .polaroid {
+    background: white;
+    padding: 0.75rem 0.75rem 2.5rem 0.75rem;
+    box-shadow: 0 4px 6px hsl(var(--foreground) / 0.1);
+  }
+
+  .horizontal-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary)) hsl(var(--muted));
+  }
+
+  .horizontal-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .horizontal-scroll::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  .horizontal-scroll::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  .doodle-star {
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+  }
+}

@@ -35,7 +35,7 @@ const Index = () => {
       const containerRect = scrollContainerRef.current.getBoundingClientRect();
       const sectionRect = section.getBoundingClientRect();
       const scrollLeft = scrollContainerRef.current.scrollLeft + sectionRect.left - containerRect.left - 140;
-      
+
       scrollContainerRef.current.scrollTo({
         left: scrollLeft,
         behavior: "smooth",
@@ -44,23 +44,21 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-frame overflow-hidden">
-      {/* Quick Nav */}
+    <div className="min-h-screen overflow-hidden">
+      {/* Quick Nav - overlays on paper */}
       <QuickNav onNavigate={scrollToSection} />
 
       {/* Main scrolling canvas */}
       <div
         ref={scrollContainerRef}
-        className="horizontal-scroll h-screen pl-32"
+        className="horizontal-scroll h-screen"
       >
-        <div className="flex h-full paper-texture min-w-max">
-          {/* Decorative left border */}
-          <div className="w-8 h-full bg-gradient-to-r from-frame to-transparent flex-shrink-0" />
+        <div className="flex h-full min-w-max pt-20 pl-4 paper-texture">
 
           {/* Content sections */}
           <div className="flex items-stretch relative">
             <HeroSection />
-            
+
             {/* Divider doodle */}
             <div className="w-px bg-border/50 mx-4 relative">
               <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 text-2xl">
@@ -69,7 +67,7 @@ const Index = () => {
             </div>
 
             <WhiteboardCanvas />
-            
+
             {/* Divider doodle */}
             <div className="w-px bg-border/50 mx-4 relative">
               <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 text-2xl">
@@ -78,7 +76,7 @@ const Index = () => {
             </div>
 
             <ProjectsSection />
-            
+
             {/* Divider doodle */}
             <div className="w-px bg-border/50 mx-4 relative">
               <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 text-2xl">
@@ -87,7 +85,7 @@ const Index = () => {
             </div>
 
             <PhotoGallery />
-            
+
             {/* Divider doodle */}
             <div className="w-px bg-border/50 mx-4 relative">
               <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 text-2xl">
@@ -97,9 +95,6 @@ const Index = () => {
 
             <EasterEgg />
           </div>
-
-          {/* Decorative right border */}
-          <div className="w-32 h-full bg-gradient-to-l from-frame to-transparent flex-shrink-0" />
         </div>
       </div>
 

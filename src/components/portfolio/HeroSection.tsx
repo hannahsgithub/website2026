@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Underline } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -32,16 +32,16 @@ const HeroSection = () => {
           </h1>
 
           <ul className="font-sketch text-xl text-foreground/80 space-y-2 ml-6 list-disc">
-            <li>CS @ UWaterloo</li>
-            <li>Former Intern @ Shopify</li>
-            <li>Building cool things @ Voser</li>
+            <li>Systems Design Engineering @ UWaterloo</li>
+            <li>Prev. Intern @ Shopify</li>
+            <li>Looking for <span className="underline">Summer 2026 Internship + 2027 New Grad roles!</span></li>
           </ul>
         </div>
 
         {/* Social Links */}
         <div className="flex gap-4 mt-4">
           <a
-            href="https://github.com"
+            href="http://github.com/hannahsgithub"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 bg-sticky-purple/80 rounded-lg hand-drawn-border hover:scale-110 transition-transform"
@@ -49,7 +49,7 @@ const HeroSection = () => {
             <Github size={24} className="text-foreground" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="http://linkedin.com/in/hannah-song-uw"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 bg-sticky-blue/80 rounded-lg hand-drawn-border hover:scale-110 transition-transform"
@@ -57,7 +57,7 @@ const HeroSection = () => {
             <Linkedin size={24} className="text-foreground" />
           </a>
           <a
-            href="mailto:hello@hannah.dev"
+            href="mailto:h9song@uwaterloo.ca"
             className="p-3 bg-sticky-pink/80 rounded-lg hand-drawn-border hover:scale-110 transition-transform"
           >
             <Mail size={24} className="text-foreground" />

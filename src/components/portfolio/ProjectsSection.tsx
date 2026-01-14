@@ -1,4 +1,4 @@
-import { ExternalLink, Github, FileText } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
 const PROJECTS = [
   {
@@ -29,8 +29,8 @@ const PROJECTS = [
 
 const ProjectsSection = () => {
   return (
-    <section 
-      id="projects" 
+    <section
+      id="projects"
       className="min-w-[800px] h-full flex flex-col justify-center px-8 py-8"
     >
       <h2 className="text-4xl font-handwritten text-foreground mb-8 text-center">
@@ -51,7 +51,7 @@ const ProjectsSection = () => {
             <h3 className="font-handwritten text-2xl font-bold text-foreground mb-2">
               {project.title}
             </h3>
-            
+
             <p className="font-sketch text-sm text-foreground/80 mb-3">
               {project.description}
             </p>
@@ -59,7 +59,7 @@ const ProjectsSection = () => {
             {/* Tags */}
             <div className="flex flex-wrap gap-1 mb-3">
               {project.tags.map((tag) => (
-                <span 
+                <span
                   key={tag}
                   className="text-xs font-sketch bg-foreground/10 px-2 py-0.5 rounded"
                 >
@@ -70,15 +70,15 @@ const ProjectsSection = () => {
 
             {/* Links */}
             <div className="flex gap-2">
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="p-1.5 bg-foreground/10 rounded hover:bg-foreground/20 transition-colors"
                 aria-label="View project"
               >
                 <ExternalLink size={16} className="text-foreground" />
               </a>
-              <a 
-                href="#" 
+              <a
+                href="#"
                 className="p-1.5 bg-foreground/10 rounded hover:bg-foreground/20 transition-colors"
                 aria-label="View source"
               >
@@ -87,29 +87,6 @@ const ProjectsSection = () => {
             </div>
           </div>
         ))}
-
-        {/* Resume card */}
-        <div className="bg-sticky-yellow sticky-note p-5 w-56 rotate-1">
-          <div className="flex items-center gap-2 mb-2">
-            <FileText size={24} className="text-foreground" />
-            <h3 className="font-handwritten text-2xl font-bold text-foreground">
-              Resume
-            </h3>
-          </div>
-          
-          <p className="font-sketch text-sm text-foreground/80 mb-3">
-            Want the full story? Check out my resume!
-          </p>
-
-          <a 
-            href="#" 
-            id="resume"
-            className="inline-flex items-center gap-2 font-sketch text-sm bg-foreground/10 px-3 py-1.5 rounded hover:bg-foreground/20 transition-colors"
-          >
-            <span>Download PDF</span>
-            <ExternalLink size={14} />
-          </a>
-        </div>
       </div>
 
       {/* Decorative elements */}

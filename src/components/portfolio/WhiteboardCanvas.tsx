@@ -25,7 +25,7 @@ const WhiteboardCanvas = () => {
 
     const canvas = new FabricCanvas(canvasRef.current, {
       width: 500,
-      height: 400,
+      height: 500,
       backgroundColor: "transparent",
       isDrawingMode: true,
     });
@@ -56,9 +56,9 @@ const WhiteboardCanvas = () => {
   };
 
   return (
-    <section 
-      id="whiteboard" 
-      className="min-w-[600px] h-full flex flex-col items-center justify-center px-8 py-8"
+    <section
+      id="whiteboard"
+      className="h-full flex flex-col items-center px-8"
     >
       <div className="relative">
         {/* Title */}
@@ -67,12 +67,12 @@ const WhiteboardCanvas = () => {
         </h2>
 
         {/* Canvas container */}
-        <div 
+        <div
           ref={containerRef}
           className="relative bg-paper rounded-lg border-2 border-foreground/20 shadow-lg overflow-hidden"
         >
           {/* Grid pattern overlay */}
-          <div 
+          <div
             className="absolute inset-0 opacity-30 pointer-events-none"
             style={{
               backgroundImage: `
@@ -82,7 +82,7 @@ const WhiteboardCanvas = () => {
               backgroundSize: '20px 20px'
             }}
           />
-          
+
           <canvas ref={canvasRef} className="relative z-10 cursor-crosshair" />
 
           {/* Pre-drawn decorative doodle hint */}
@@ -99,8 +99,8 @@ const WhiteboardCanvas = () => {
               onClick={() => setActiveColor(color.value)}
               className={`
                 w-8 h-8 rounded-full border-2 transition-all
-                ${activeColor === color.value 
-                  ? "border-foreground scale-125 shadow-lg" 
+                ${activeColor === color.value
+                  ? "border-foreground scale-125 shadow-lg"
                   : "border-foreground/30 hover:scale-110"
                 }
               `}
@@ -108,7 +108,7 @@ const WhiteboardCanvas = () => {
               aria-label={`Select ${color.name} color`}
             />
           ))}
-          
+
           {/* Brush size */}
           <div className="ml-4 flex items-center gap-2">
             <input

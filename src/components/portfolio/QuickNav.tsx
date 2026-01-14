@@ -11,18 +11,19 @@ const QuickNav = ({ onNavigate }: QuickNavProps) => {
   ];
 
   return (
-    <nav className="fixed top-4 left-4 z-50 flex flex-row gap-3">
+    <nav className="fixed top-4 left-4 z-50 flex flex-row gap-4">
       {navItems.map((item) => (
         <button
           key={item.id}
           onClick={() => onNavigate(item.id)}
           className={`
             ${item.color} ${item.rotation}
-            sticky-note
-            px-4 py-2 
-            font-sketch text-foreground text-base
+            sticky-note hand-drawn-border
+            px-6 py-3 
+            font-sketch text-foreground text-lg
             cursor-pointer
-            border-none
+            border-2 border-foreground/20
+            hover:animate-wiggle
           `}
         >
           {item.label}

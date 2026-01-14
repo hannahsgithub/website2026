@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import QuickNav from "@/components/portfolio/QuickNav";
 import HeroSection from "@/components/portfolio/HeroSection";
+import ResumeSection from "@/components/portfolio/ResumeSection";
 import WhiteboardCanvas from "@/components/portfolio/WhiteboardCanvas";
 import PhotoGallery from "@/components/portfolio/PhotoGallery";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
@@ -67,6 +68,15 @@ const Index = () => {
             </div>
 
             <WhiteboardCanvas />
+
+            {/* Divider doodle */}
+            <div className="w-px bg-border/50 mx-4 relative">
+              <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 text-2xl">
+                📎
+              </div>
+            </div>
+
+            <ResumeSection />
 
             {/* Divider doodle */}
             <div className="w-px bg-border/50 mx-4 relative">

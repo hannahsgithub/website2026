@@ -184,27 +184,16 @@
     padding: 0.75rem 0.75rem 2.5rem 0.75rem;
     box-shadow: 0 4px 6px hsl(var(--foreground) / 0.1);
   }
-
   .horizontal-scroll {
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--primary)) hsl(var(--muted));
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .horizontal-scroll::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .horizontal-scroll::-webkit-scrollbar-track {
-    background: hsl(var(--muted));
-    border-radius: 4px;
-  }
-
-  .horizontal-scroll::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary));
-    border-radius: 4px;
+    display: none;
   }
 
   .doodle-star {

@@ -21,9 +21,10 @@ const HeroSection = () => {
 
       <div className="flex flex-col items-start gap-6 relative">
         {/* Avatar */}
-        <div className="w-32 h-32 rounded-full bg-sticky-blue border-4 border-foreground/20 overflow-hidden flex items-center justify-center">
+        {/* <div className="w-32 h-32 rounded-full bg-sticky-blue border-4 border-foreground/20 overflow-hidden flex items-center justify-center">
           <span className="text-6xl">👩‍💻</span>
-        </div>
+        </div> */}
+        <div><img src="/images/image-7.png" alt="Me" className="w-32 h-32 rounded-full bg-sticky-blue border-4 border-foreground/20 overflow-hidden flex items-center justify-center" /></div>
 
         {/* Intro */}
         <div className="space-y-4">
@@ -62,13 +63,6 @@ const HeroSection = () => {
           >
             <Mail size={24} className="text-foreground" />
           </a>
-        </div>
-
-        {/* Fun note */}
-        <div className="mt-8 bg-sticky-yellow p-4 sticky-note max-w-xs">
-          <p className="font-sketch text-foreground/80 text-sm">
-            ← scroll left and right to explore! →
-          </p>
         </div>
       </div>
     </section>

@@ -44,11 +44,6 @@ const ResumeSection = () => {
                     <ExternalLink size={16} />
                 </a>
             </div>
-
-            {/* Decorative */}
-            <div className="absolute top-16 left-8">
-                <span className="text-2xl opacity-60">📌</span>
-            </div>
         </section>
     );
 };

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import QuickNav from "@/components/portfolio/QuickNav";
 import HeroSection from "@/components/portfolio/HeroSection";
 import ResumeSection from "@/components/portfolio/ResumeSection";
@@ -9,14 +9,15 @@ import EasterEgg from "@/components/portfolio/EasterEgg";
 
 const Index = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
 
-  // Handle horizontal scroll with mouse wheel
+  // Handle horizontal scroll with mouse wheel and track progress
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
     const handleWheel = (e: WheelEvent) => {
-      // Only convert vertical scroll to horizontal if not inside canvas
       const target = e.target as HTMLElement;
       if (target.tagName === "CANVAS") return;
 
@@ -26,8 +27,18 @@ const Index = () => {
       }
     };
 
+    const handleScroll = () => {
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      const progress = maxScroll > 0 ? (container.scrollLeft / maxScroll) * 100 : 0;
+      setScrollProgress(progress);
+    };
+
     container.addEventListener("wheel", handleWheel, { passive: false });
-    return () => container.removeEventListener("wheel", handleWheel);
+    container.addEventListener("scroll", handleScroll);
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+      container.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -108,13 +119,20 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Scroll hint at bottom */}
-      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40">
-        <div className="bg-card/80 backdrop-blur-sm px-4 py-2 rounded-full border border-border shadow-lg">
-          <p className="font-sketch text-sm text-muted-foreground flex items-center gap-2">
-            <span>←</span>
-            <span>scroll or use nav</span>
-            <span>→</span>
+      {/* Interactive scroll indicator */}
+      <div
+        className="fixed bottom-4 z-40 w-60"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
+        {/* Playful label */}
+        <div className="mt-8 bg-sticky-yellow p-2 sticky-note max-w-xs">
+          <p className={`font-sketch text-center text-sm text-muted-foreground transition-all duration-300 ${isHovering ? 'scale-105' : ''}`}>
+            {scrollProgress < 5
+              ? "← scroll sideways! →"
+              : scrollProgress > 95
+                ? "you made it!"
+                : `${Math.round(scrollProgress)}% explored~`}
           </p>
         </div>
       </div>

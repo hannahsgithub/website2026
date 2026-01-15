@@ -58,7 +58,7 @@ const WhiteboardCanvas = () => {
   return (
     <section
       id="whiteboard"
-      className="h-full flex flex-col items-center px-8"
+      className="min-w-[600px] h-full flex flex-col items-center justify-center px-8 pb-8"
     >
       <div className="relative">
         {/* Title */}

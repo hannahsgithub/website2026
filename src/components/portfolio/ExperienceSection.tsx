@@ -34,10 +34,10 @@ const ExperiencesSection = () => {
     return (
         <section
             id="experiences"
-            className="min-w-[700px] h-full flex flex-col justify-center px-12 py-8"
+            className="min-w-[700px] h-full flex flex-col justify-center px-12 pb-8"
         >
             <h2 className="font-handwritten text-4xl text-foreground mb-8">
-                where i've been
+                where i've been as an intern engineer
             </h2>
 
             <div className="space-y-6 max-w-[580px]">
@@ -81,18 +81,20 @@ const ExperiencesSection = () => {
             </div>
 
             {/* Footer note */}
-            <p className="font-handwritten text-xl text-foreground mb-2 mt-6 italic">beyond the code...</p>
-            <ul className="space-y-3 pl-2">
-                <li className="font-sketch text-foreground/80 list-disc">
-                    <span>expanding my "been to" list of restaurants</span>
-                </li>
-                <li className="font-sketch text-foreground/80 list-disc">
-                    <span>honing my bouldering skills</span>
-                </li>
-                <li className="font-sketch text-foreground/80 list-disc">
-                    <span>catching up to the 1100+ One Piece episodes</span>
-                </li>
-            </ul>
+            <div className="text-right">
+                <p className="font-handwritten text-xl text-foreground mb-2 mt-8 italic">beyond the code...</p>
+                <ul className="space-y-3 pl-2">
+                    <li className="font-sketch text-foreground/80">
+                        <span>⚝ expanding my "been to" list of restaurants</span>
+                    </li>
+                    <li className="font-sketch text-foreground/80">
+                        <span>⚝ honing my bouldering skills</span>
+                    </li>
+                    <li className="font-sketch text-foreground/80">
+                        <span>⚝ catching up to the 1100+ One Piece episodes</span>
+                    </li>
+                </ul>
+            </div>
         </section>
     );
 };

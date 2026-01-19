@@ -1,19 +1,19 @@
 const PLACEHOLDER_PHOTOS = [
-  { id: 1, caption: "Coffee & Code ☕", rotation: "-rotate-3" },
-  { id: 2, caption: "Team hackathon! 🚀", rotation: "rotate-2" },
-  { id: 3, caption: "Exploring nature 🌿", rotation: "-rotate-1" },
-  { id: 4, caption: "Late night debugging 🌙", rotation: "rotate-3" },
-  { id: 5, caption: "Conference vibes ✨", rotation: "-rotate-2" },
+  { id: 1, caption: "Coffee & Code", rotation: "-rotate-3" },
+  { id: 2, caption: "Team hackathon!", rotation: "rotate-2" },
+  { id: 3, caption: "Exploring nature", rotation: "-rotate-1" },
+  { id: 4, caption: "Late night debugging", rotation: "rotate-3" },
+  { id: 5, caption: "Conference vibes", rotation: "-rotate-2" },
 ];
 
 const PhotoGallery = () => {
   return (
-    <section 
-      id="photos" 
+    <section
+      id="photos"
       className="min-w-[700px] h-full flex flex-col justify-center px-8 py-8"
     >
       <h2 className="text-4xl font-handwritten text-foreground mb-8 text-center">
-        📸 Moments
+        pictures from my adventures
       </h2>
 
       <div className="flex flex-wrap gap-6 justify-center items-center max-w-[600px]">
@@ -35,7 +35,7 @@ const PhotoGallery = () => {
                 {['🖼️', '📷', '🎨', '💻', '🎯'][index % 5]}
               </span>
             </div>
-            
+
             {/* Caption */}
             <p className="font-sketch text-sm text-foreground/80 mt-2 text-center">
               {photo.caption}

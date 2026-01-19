@@ -6,7 +6,7 @@ const QuickNav = ({ onNavigate }: QuickNavProps) => {
   const navItems = [
     { id: "about", label: "About", color: "bg-sticky-purple", rotation: "-rotate-2" },
     { id: "resume", label: "Resume", color: "bg-sticky-yellow", rotation: "rotate-1" },
-    { id: "projects", label: "Projects", color: "bg-sticky-green", rotation: "-rotate-1" },
+    // { id: "experiences", label: "Experience", color: "bg-sticky-green", rotation: "-rotate-1" },
     { id: "photos", label: "Photos", color: "bg-sticky-pink", rotation: "rotate-2" },
   ];
 

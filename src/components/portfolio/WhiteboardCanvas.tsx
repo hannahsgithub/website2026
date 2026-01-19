@@ -63,7 +63,7 @@ const WhiteboardCanvas = () => {
       <div className="relative">
         {/* Title */}
         <h2 className="text-3xl font-handwritten text-foreground mb-4 text-center">
-          ✏️ Draw something!
+          draw anything and I will email it to you
         </h2>
 
         {/* Canvas container */}
@@ -84,11 +84,6 @@ const WhiteboardCanvas = () => {
           />
 
           <canvas ref={canvasRef} className="relative z-10 cursor-crosshair" />
-
-          {/* Pre-drawn decorative doodle hint */}
-          <div className="absolute bottom-4 right-4 opacity-20 pointer-events-none font-sketch text-foreground">
-            doodle here →
-          </div>
         </div>
 
         {/* Color palette */}

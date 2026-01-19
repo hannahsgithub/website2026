@@ -24,17 +24,17 @@ const HeroSection = () => {
         {/* <div className="w-32 h-32 rounded-full bg-sticky-blue border-4 border-foreground/20 overflow-hidden flex items-center justify-center">
           <span className="text-6xl">👩‍💻</span>
         </div> */}
-        <div><img src="/images/image-7.png" alt="Me" className="w-32 h-32 rounded-full bg-sticky-blue border-4 border-foreground/20 overflow-hidden flex items-center justify-center" /></div>
+        <div className="flex items-center justify-center"><img src="/images/me.png" alt="Me" className="w-40 h-40 overflow-hidden" /></div>
 
         {/* Intro */}
         <div className="space-y-4">
           <h1 className="text-5xl font-handwritten font-bold text-foreground">
-            Hi! I'm <span className="text-primary">Hannah Song</span> ✨
+            Hi! I'm <span className="text-primary">Hannah Song</span>
           </h1>
 
           <ul className="font-sketch text-xl text-foreground/80 space-y-2 ml-6 list-disc">
             <li>Systems Design Engineering @ UWaterloo</li>
-            <li>Prev. Intern @ Shopify</li>
+            {/* <li>Prev. SWE intern @ <span className="underline text-primary"><a href="http://shopify.com" target="_blank">Shopify</a></span></li> */}
             <li>Looking for <span className="underline">Summer 2026 Internship + 2027 New Grad roles!</span></li>
           </ul>
         </div>

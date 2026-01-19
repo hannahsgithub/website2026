@@ -4,7 +4,8 @@ import HeroSection from "@/components/portfolio/HeroSection";
 import ResumeSection from "@/components/portfolio/ResumeSection";
 import WhiteboardCanvas from "@/components/portfolio/WhiteboardCanvas";
 import PhotoGallery from "@/components/portfolio/PhotoGallery";
-import ProjectsSection from "@/components/portfolio/ProjectsSection";
+import ExperiencesSection from "@/components/portfolio/ExperienceSection";
+// import ProjectsSection from "@/components/portfolio/ProjectsSection";
 import EasterEgg from "@/components/portfolio/EasterEgg";
 
 const Index = () => {
@@ -72,13 +73,13 @@ const Index = () => {
             <HeroSection />
 
             {/* Divider doodle */}
-            <div className="w-px bg-border/50 mx-4 relative">
+            {/* <div className="w-px bg-border/50 mx-4 relative">
               <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 text-2xl">
                 ✿
               </div>
-            </div>
+            </div> */}
 
-            <WhiteboardCanvas />
+            <ExperiencesSection />
 
             {/* Divider doodle */}
             <div className="w-px bg-border/50 mx-4 relative">
@@ -96,7 +97,8 @@ const Index = () => {
               </div>
             </div>
 
-            <ProjectsSection />
+            {/* <ProjectsSection /> */}
+            <WhiteboardCanvas />
 
             {/* Divider doodle */}
             <div className="w-px bg-border/50 mx-4 relative">

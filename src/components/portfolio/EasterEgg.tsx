@@ -3,53 +3,58 @@ import { Sparkles } from "lucide-react";
 
 const EasterEgg = () => {
   const [revealed, setRevealed] = useState(false);
+  const [currentText, setCurrentText] = useState("");
 
-  const funFacts = [
-    "I can solve a Rubik's cube in under 2 minutes! 🧩",
-    "My first program was a text adventure game 🎮",
-    "I've consumed mass amounts of boba tea while coding 🧋",
-    "I dream in code sometimes (it's weird) 💭",
-    "My rubber duck debugger is named Gerald 🦆",
+  const textItems = [
+    "What is the nicest building on UWaterloo campus? Answer: Engineering 7",
+    "I ran out of question ideas",
+    "Uhhh",
+    "Will I be employed? Answer: YES YES YES PLEASE HIRE ME",
+    "What is the best major in the world? Answer: Systems Design Engineering",
   ];
 
-  const [currentFact] = useState(() => 
-    funFacts[Math.floor(Math.random() * funFacts.length)]
-  );
+  const handleClick = () => {
+    const newRevealed = !revealed;
+    setRevealed(newRevealed);
+    if (newRevealed) {
+      const randomText = textItems[Math.floor(Math.random() * textItems.length)];
+      setCurrentText(randomText);
+    }
+  };
 
   return (
-    <section 
-      id="easter-egg" 
+    <section
+      id="easter-egg"
       className="min-w-[300px] h-full flex flex-col items-center justify-center px-8 py-8"
     >
-      <div 
+      <div
         className={`
           bg-sticky-orange p-6 sticky-note cursor-pointer
           transition-all duration-500
           ${revealed ? "rotate-0 scale-110" : "rotate-6"}
         `}
-        onClick={() => setRevealed(!revealed)}
+        onClick={handleClick}
       >
         <div className="flex items-center gap-2 mb-3">
-          <Sparkles size={20} className="text-foreground" />
           <h3 className="font-handwritten text-xl font-bold text-foreground">
-            {revealed ? "Fun fact!" : "Something funny"}
+            {revealed ? "question.." : "click me!"}
           </h3>
         </div>
 
         <p className="font-sketch text-sm text-foreground/80">
-          {revealed ? currentFact : "Psst... click me! 👀"}
+          {revealed ? currentText : "for random trivia"}
         </p>
       </div>
 
       {/* End decoration */}
       <div className="mt-12 text-center">
         <p className="font-sketch text-muted-foreground text-sm">
-          ~ end of the whiteboard ~
+          end of the whiteboard
         </p>
         <div className="flex justify-center gap-2 mt-2">
-          <span className="text-2xl">✨</span>
-          <span className="text-2xl">🎨</span>
-          <span className="text-2xl">✨</span>
+          <span className="text-2xl">A</span>
+          <span className="text-2xl">B</span>
+          <span className="text-2xl">C</span>
         </div>
       </div>
     </section>

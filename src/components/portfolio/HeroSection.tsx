@@ -48,7 +48,14 @@ const HeroSection = () => {
         {/* <div className="w-32 h-32 rounded-full bg-sticky-blue border-4 border-foreground/20 overflow-hidden flex items-center justify-center">
           <span className="text-6xl">👩‍💻</span>
         </div> */}
-        <div className="flex items-center justify-center"><img src="/images/me.png" alt="Me" className="w-40 h-40 overflow-hidden" /></div>
+        <div className="flex items-center justify-center w-40 h-40 rounded-full overflow-hidden hand-drawn-border">
+          <img
+            src="/images/me.png"
+            alt="Me"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
 
         {/* Intro */}
         <div className="space-y-4">

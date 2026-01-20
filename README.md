@@ -1,6 +1,8 @@
 # website2026
 
-This is my personal portfolio, styled like a messy notebook and built to feel playful instead of template-ty. [See it here!]([url](https://hannahsong.space/))
+This is my personal portfolio, styled like a messy notebook and built to feel playful instead of template-ty. 
+
+See it here -> [https://hannahsong.space/](https://hannahsong.space/)
 
 ## What’s inside
 - A hand-drawn, sketchbook-style layout
@@ -23,4 +25,5 @@ Nothing super fancy unfortunately, maybe in the future??
 ```bash
 npm install
 npm run dev
+
 

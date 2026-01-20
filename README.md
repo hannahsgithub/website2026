@@ -25,5 +25,3 @@ Nothing super fancy unfortunately, maybe in the future??
 ```bash
 npm install
 npm run dev
-
-

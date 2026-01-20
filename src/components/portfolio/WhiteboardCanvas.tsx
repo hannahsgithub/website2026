@@ -51,12 +51,10 @@ const WhiteboardCanvas = () => {
       // Set up eraser mode
       fabricCanvas.freeDrawingBrush.color = 'rgba(255,255,255,1)'; // White color for erasing
       fabricCanvas.freeDrawingBrush.width = brushSize;
-      fabricCanvas.freeDrawingBrush.globalCompositeOperation = 'destination-out';
     } else {
       // Set up drawing mode
       fabricCanvas.freeDrawingBrush.color = activeColor;
       fabricCanvas.freeDrawingBrush.width = brushSize;
-      fabricCanvas.freeDrawingBrush.globalCompositeOperation = 'source-over';
     }
   }, [activeColor, brushSize, fabricCanvas, isErasing]);
 

@@ -7,7 +7,8 @@ const QuickNav = ({ onNavigate }: QuickNavProps) => {
     { id: "about", label: "About", color: "bg-sticky-purple", rotation: "-rotate-2" },
     { id: "resume", label: "Resume", color: "bg-sticky-yellow", rotation: "rotate-1" },
     // { id: "experiences", label: "Experience", color: "bg-sticky-green", rotation: "-rotate-1" },
-    { id: "photos", label: "Photos", color: "bg-sticky-pink", rotation: "rotate-2" },
+    { id: "draw", label: "Draw", color: "bg-sticky-pink", rotation: "-rotate-1" },
+    { id: "photos", label: "Photos", color: "bg-sticky-blue", rotation: "rotate-2" },
   ];
 
   return (

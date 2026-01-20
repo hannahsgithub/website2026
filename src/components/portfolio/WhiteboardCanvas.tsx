@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Canvas as FabricCanvas, PencilBrush } from "fabric";
-import { Eraser, Trash2 } from "lucide-react";
+import { Eraser, Trash2, Save, Upload } from "lucide-react";
 
 const COLORS = [
   { name: "black", value: "hsl(0, 0%, 15%)", class: "bg-draw-black" },
@@ -19,14 +19,16 @@ const WhiteboardCanvas = () => {
   const [fabricCanvas, setFabricCanvas] = useState<FabricCanvas | null>(null);
   const [activeColor, setActiveColor] = useState(COLORS[0].value);
   const [brushSize, setBrushSize] = useState(3);
+  const [isErasing, setIsErasing] = useState(false);
 
   useEffect(() => {
     if (!canvasRef.current || !containerRef.current) return;
 
+    const container = containerRef.current;
     const canvas = new FabricCanvas(canvasRef.current, {
       width: 500,
       height: 500,
-      backgroundColor: "transparent",
+      backgroundColor: "white",
       isDrawingMode: true,
     });
 
@@ -44,47 +46,92 @@ const WhiteboardCanvas = () => {
 
   useEffect(() => {
     if (!fabricCanvas || !fabricCanvas.freeDrawingBrush) return;
-    fabricCanvas.freeDrawingBrush.color = activeColor;
-    fabricCanvas.freeDrawingBrush.width = brushSize;
-  }, [activeColor, brushSize, fabricCanvas]);
+
+    if (isErasing) {
+      // Set up eraser mode
+      fabricCanvas.freeDrawingBrush.color = 'rgba(255,255,255,1)'; // White color for erasing
+      fabricCanvas.freeDrawingBrush.width = brushSize;
+      fabricCanvas.freeDrawingBrush.globalCompositeOperation = 'destination-out';
+    } else {
+      // Set up drawing mode
+      fabricCanvas.freeDrawingBrush.color = activeColor;
+      fabricCanvas.freeDrawingBrush.width = brushSize;
+      fabricCanvas.freeDrawingBrush.globalCompositeOperation = 'source-over';
+    }
+  }, [activeColor, brushSize, fabricCanvas, isErasing]);
 
   const handleClear = () => {
     if (!fabricCanvas) return;
     fabricCanvas.clear();
-    fabricCanvas.backgroundColor = "transparent";
+    fabricCanvas.backgroundColor = "white";
     fabricCanvas.renderAll();
+  };
+
+  const handleSave = () => {
+    if (!fabricCanvas) return;
+
+    const dataURL = fabricCanvas.toDataURL({ format: 'png', multiplier: 1 });
+
+    // Create a download link
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'whiteboard-drawing.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handlePublish = () => {
+    if (!fabricCanvas) return;
+
+    const dataURL = fabricCanvas.toDataURL({ format: 'png', multiplier: 1 });
+
+    // Get existing published drawings
+    const published = JSON.parse(localStorage.getItem('publishedDrawings') || '[]');
+
+    // Add new drawing with timestamp
+    const newDrawing = {
+      id: Date.now().toString(),
+      dataURL,
+      timestamp: new Date().toISOString()
+    };
+
+    published.push(newDrawing);
+
+    // Save back to localStorage
+    localStorage.setItem('publishedDrawings', JSON.stringify(published));
+
+    // Notify other components that a drawing was published
+    window.dispatchEvent(new CustomEvent('drawingPublished'));
+
+    alert('Drawing published to your profile!');
   };
 
   return (
     <section
-      id="whiteboard"
+      id="draw"
       className="min-w-[600px] h-full flex flex-col items-center justify-center px-8 pb-8"
     >
       <div className="relative">
         {/* Title */}
         <h2 className="text-3xl font-handwritten text-foreground mb-4 text-center">
-          draw anything and I will email it to you
+          draw anything and save it
         </h2>
 
         {/* Canvas container */}
-        <div
-          ref={containerRef}
-          className="relative bg-paper rounded-lg border-2 border-foreground/20 shadow-lg overflow-hidden"
-        >
-          {/* Grid pattern overlay */}
+        <div className="flex justify-center items-center w-full">
           <div
-            className="absolute inset-0 opacity-30 pointer-events-none"
-            style={{
-              backgroundImage: `
-                linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
-                linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px)
-              `,
-              backgroundSize: '20px 20px'
-            }}
-          />
-
-          <canvas ref={canvasRef} className="relative z-10 cursor-crosshair" />
+            ref={containerRef}
+            className="relative bg-white rounded-lg border-2 border-foreground/20 shadow-lg overflow-hidden"
+            style={{ width: '500px', height: '500px' }}
+          >
+            <canvas
+              ref={canvasRef}
+              className="relative z-10 cursor-crosshair w-full h-full"
+            />
+          </div>
         </div>
+
 
         {/* Color palette */}
         <div className="mt-4 flex items-center justify-center gap-2 flex-wrap">
@@ -117,6 +164,32 @@ const WhiteboardCanvas = () => {
             <span className="font-sketch text-sm text-foreground/70">{brushSize}px</span>
           </div>
 
+          {/* Eraser toggle */}
+          <button
+            onClick={() => setIsErasing(!isErasing)}
+            className={`ml-4 p-2 rounded-lg hover:scale-110 transition-transform hand-drawn-border ${isErasing ? 'bg-red-200' : 'bg-gray-200'
+              }`}
+            aria-label={isErasing ? "Switch to drawing mode" : "Switch to eraser mode"}
+          >
+            <Eraser size={20} className="text-foreground" />
+          </button>
+
+          {/* Save button */}
+          <button
+            onClick={handleSave}
+            className="ml-4 p-2 bg-sticky-blue rounded-lg hover:scale-110 transition-transform hand-drawn-border"
+            aria-label="Save and email canvas"
+          >
+            <Save size={20} className="text-foreground" />
+          </button>
+          {/* Publish button */}
+          <button
+            onClick={handlePublish}
+            className="ml-4 p-2 bg-sticky-green rounded-lg hover:scale-110 transition-transform hand-drawn-border"
+            aria-label="Publish to profile"
+          >
+            <Upload size={20} className="text-foreground" />
+          </button>
           {/* Clear button */}
           <button
             onClick={handleClear}

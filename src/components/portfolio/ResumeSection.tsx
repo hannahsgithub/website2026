@@ -35,7 +35,7 @@ const ResumeSection = () => {
 
                 {/* Download link */}
                 <a
-                    href="#"
+                    href="https://drive.google.com/file/d/1taaxTZzyPcs2L9f760oFSMFAqY_Valnm/view"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hand-drawn-border inline-flex items-center gap-2 bg-sticky-yellow sticky-note px-4 py-2 font-sketch text-foreground hover:scale-105 transition-transform"
@@ -43,6 +43,7 @@ const ResumeSection = () => {
                     <span>Open in new tab</span>
                     <ExternalLink size={16} />
                 </a>
+
             </div>
         </section>
     );

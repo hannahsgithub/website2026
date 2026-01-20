@@ -1,6 +1,30 @@
 import { Github, Linkedin, Mail, Underline } from "lucide-react";
+import { useEffect, useState } from "react";
+
+interface PublishedDrawing {
+  id: string;
+  dataURL: string;
+  timestamp: string;
+}
 
 const HeroSection = () => {
+  const [publishedDrawings, setPublishedDrawings] = useState<PublishedDrawing[]>([]);
+
+  useEffect(() => {
+    // Load published drawings from localStorage
+    const loadDrawings = () => {
+      const drawings = JSON.parse(localStorage.getItem('publishedDrawings') || '[]');
+      setPublishedDrawings(drawings);
+    };
+
+    loadDrawings();
+
+    // Listen for custom event when drawings are published
+    const handleDrawingPublished = () => loadDrawings();
+
+    window.addEventListener('drawingPublished', handleDrawingPublished);
+    return () => window.removeEventListener('drawingPublished', handleDrawingPublished);
+  }, []);
   return (
     <section
       id="about"
@@ -64,6 +88,42 @@ const HeroSection = () => {
             <Mail size={24} className="text-foreground" />
           </a>
         </div>
+
+        {/* Published Drawings Gallery */}
+        {publishedDrawings.length > 0 && (
+          <div className="mt-8">
+            <h3 className="font-handwritten text-2xl text-foreground mb-4">
+              Visitor Creations!{" "}
+              <a
+                href="#draw"
+                className="underline cursor-pointer text-primary hover:opacity-80"
+              >
+                make your own
+              </a>
+            </h3>
+
+            <div className="grid grid-cols-4 gap-2 max-w-md">
+              {publishedDrawings.slice(-8).reverse().map((drawing: PublishedDrawing) => (
+                <div
+                  key={drawing.id}
+                  className="w-20 h-20 border-2 border-foreground/20 rounded-lg overflow-hidden hover:scale-105 transition-transform cursor-pointer"
+                  title={`Created ${new Date(drawing.timestamp).toLocaleDateString()}`}
+                >
+                  <img
+                    src={drawing.dataURL}
+                    alt="Published drawing"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+            {publishedDrawings.length > 8 && (
+              <p className="font-sketch text-sm text-foreground/60 mt-2">
+                Showing latest 8 drawings
+              </p>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
